@@ -11,4 +11,4 @@ router.post(
   UserController.createUser,
 );
 
-export default router;
+export const UserRoutes = router;

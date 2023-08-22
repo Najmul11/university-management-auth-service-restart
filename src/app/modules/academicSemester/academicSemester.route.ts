@@ -11,4 +11,4 @@ router.post(
   AcademicSemesterController.createSemester,
 );
 
-export default router;
+export const AcademicSemesterRoutes = router;
