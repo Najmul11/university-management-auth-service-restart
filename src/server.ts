@@ -14,7 +14,7 @@ process.on('uncaughtException', error => {
 
 async function bootstrap() {
   try {
-    await mongoose.connect(config.database_urll as string);
+    await mongoose.connect(config.database_url as string);
     logger.info('Database connected succesfully');
 
     server = app.listen(config.port, () => {

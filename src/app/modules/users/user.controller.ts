@@ -4,10 +4,10 @@ import catchAsyncError from '../../../shared/catchAsyncError';
 import sendResponse from '../../../shared/sendResponse';
 import httpStatus from 'http-status';
 
-const createUser = catchAsyncError(async (req: Request, res: Response) => {
-  const user = req.body;
+const createStudent = catchAsyncError(async (req: Request, res: Response) => {
+  const { student, ...userData } = req.body;
+  const result = await UserService.createStudent(student, userData);
 
-  const result = await UserService.createUser(user);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -17,5 +17,5 @@ const createUser = catchAsyncError(async (req: Request, res: Response) => {
 });
 
 export const UserController = {
-  createUser,
+  createStudent,
 };
