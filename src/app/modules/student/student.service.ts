@@ -44,8 +44,7 @@ const getAllStudents = async (
     });
   }
 
-  const whereConditions =
-    andConditions.length > 0 ? { $and: andConditions } : {};
+  const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Student.find(whereConditions)
     .populate('academicFaculty')
@@ -75,10 +74,7 @@ const getSingleStudent = async (id: string): Promise<IStudent | null> => {
   return result;
 };
 
-const updateStudent = async (
-  id: string,
-  payload: Partial<IStudent>,
-): Promise<IStudent | null> => {
+const updateStudent = async (id: string, payload: Partial<IStudent>): Promise<IStudent | null> => {
   const isExist = await Student.findOne({ id });
 
   if (!isExist) {
@@ -100,14 +96,12 @@ const updateStudent = async (
   if (guardian && Object.keys(guardian).length > 0) {
     Object.keys(guardian).forEach(key => {
       const guardianKey = `guardian.${key}` as keyof Partial<IStudent>; // `guardian.fisrtguardian`
-      (updatedStudentData as any)[guardianKey] =
-        guardian[key as keyof typeof guardian];
+      (updatedStudentData as any)[guardianKey] = guardian[key as keyof typeof guardian];
     });
   }
   if (localGuardian && Object.keys(localGuardian).length > 0) {
     Object.keys(localGuardian).forEach(key => {
-      const localGuradianKey =
-        `localGuardian.${key}` as keyof Partial<IStudent>; // `localGuardian.fisrtName`
+      const localGuradianKey = `localGuardian.${key}` as keyof Partial<IStudent>; // `localGuardian.fisrtName`
       (updatedStudentData as any)[localGuradianKey] =
         localGuardian[key as keyof typeof localGuardian];
     });

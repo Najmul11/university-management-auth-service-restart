@@ -3,10 +3,7 @@ import {
   academicSemesterSearchableFields,
   academicSemesterTitleCodeMapper,
 } from './academicSemester.constants';
-import {
-  IAcademicSemester,
-  IAcademicSemesterFilters,
-} from './academicSemester.interface';
+import { IAcademicSemester, IAcademicSemesterFilters } from './academicSemester.interface';
 import { AcademicSemester } from './academicSemester.model';
 import httpStatus from 'http-status';
 import { IPaginationOptions } from '../../../interfaces/pagination';
@@ -14,9 +11,7 @@ import { paginationHelpers } from '../../../helpers/paginationHelpers';
 import { IGenericResponse } from '../../../interfaces/common';
 import { SortOrder } from 'mongoose';
 
-const createAcademicSemester = async (
-  payload: IAcademicSemester,
-): Promise<IAcademicSemester> => {
+const createAcademicSemester = async (payload: IAcademicSemester): Promise<IAcademicSemester> => {
   if (academicSemesterTitleCodeMapper[payload.title] !== payload.code) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid semester code');
   }
@@ -59,8 +54,7 @@ const getAllSemesters = async (
     });
   }
 
-  const whereConditions =
-    andConditions.length > 0 ? { $and: andConditions } : {};
+  const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await AcademicSemester.find(whereConditions)
     .sort(sortConditions)
@@ -79,9 +73,7 @@ const getAllSemesters = async (
   };
 };
 
-const getSingleSemester = async (
-  id: string,
-): Promise<IAcademicSemester | null> => {
+const getSingleSemester = async (id: string): Promise<IAcademicSemester | null> => {
   const result = await AcademicSemester.findById(id);
   return result;
 };
@@ -95,10 +87,7 @@ const updateSemester = async (
     payload.code &&
     academicSemesterTitleCodeMapper[payload.title] !== payload.code
   ) {
-    throw new ApiError(
-      httpStatus.BAD_REQUEST,
-      'Semester code and title mismatched',
-    );
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Semester code and title mismatched');
   }
   const result = await AcademicSemester.findOneAndUpdate({ _id: id }, payload, {
     new: true,
@@ -106,9 +95,7 @@ const updateSemester = async (
   return result;
 };
 
-const deleteSemester = async (
-  id: string,
-): Promise<IAcademicSemester | null> => {
+const deleteSemester = async (id: string): Promise<IAcademicSemester | null> => {
   const result = await AcademicSemester.findByIdAndDelete(id);
   return result;
 };

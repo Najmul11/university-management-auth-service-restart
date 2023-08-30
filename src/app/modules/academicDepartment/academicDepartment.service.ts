@@ -2,10 +2,7 @@ import { SortOrder } from 'mongoose';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import { academicDepartmentSearchableFields } from './academicDepartment.constants';
-import {
-  IAcademicDepartment,
-  IAcademicDepartmentFilters,
-} from './academicDepartment.interfaces';
+import { IAcademicDepartment, IAcademicDepartmentFilters } from './academicDepartment.interfaces';
 import { AcademicDepartment } from './academicDepartment.model';
 import { paginationHelpers } from '../../../helpers/paginationHelpers';
 
@@ -44,8 +41,7 @@ const getAllDepartments = async (
   if (sortBy && sortOrder) {
     sortConditions[sortBy] = sortOrder;
   }
-  const whereConditions =
-    andConditions.length > 0 ? { $and: andConditions } : {};
+  const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await AcademicDepartment.find(whereConditions)
     .populate('academicFaculty')
@@ -68,17 +64,12 @@ const getAllDepartments = async (
 const createDepartment = async (
   payload: IAcademicDepartment,
 ): Promise<IAcademicDepartment | null> => {
-  const result = (await AcademicDepartment.create(payload)).populate(
-    'academicFaculty',
-  );
+  const result = (await AcademicDepartment.create(payload)).populate('academicFaculty');
   return result;
 };
 
-const getSingleDepartment = async (
-  id: string,
-): Promise<IAcademicDepartment | null> => {
-  const result =
-    await AcademicDepartment.findById(id).populate('academicFaculty');
+const getSingleDepartment = async (id: string): Promise<IAcademicDepartment | null> => {
+  const result = await AcademicDepartment.findById(id).populate('academicFaculty');
   return result;
 };
 
@@ -86,19 +77,13 @@ const updateDepartment = async (
   id: string,
   payload: Partial<IAcademicDepartment>,
 ): Promise<IAcademicDepartment | null> => {
-  const result = await AcademicDepartment.findOneAndUpdate(
-    { _id: id },
-    payload,
-    {
-      new: true,
-    },
-  ).populate('academicFaculty');
+  const result = await AcademicDepartment.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  }).populate('academicFaculty');
   return result;
 };
 
-const deleteDepartment = async (
-  id: string,
-): Promise<IAcademicDepartment | null> => {
+const deleteDepartment = async (id: string): Promise<IAcademicDepartment | null> => {
   const result = await AcademicDepartment.findByIdAndDelete(id);
   return result;
 };

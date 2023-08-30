@@ -10,8 +10,7 @@ import { AcademicFacultyService } from './academicFaculty.service';
 
 const createFaculty = catchAsyncError(async (req: Request, res: Response) => {
   const { ...academicFacultyData } = req.body;
-  const result =
-    await AcademicFacultyService.createFaculty(academicFacultyData);
+  const result = await AcademicFacultyService.createFaculty(academicFacultyData);
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -24,10 +23,7 @@ const getAllFaculties = catchAsyncError(async (req: Request, res: Response) => {
   const filters = pick(req.query, academicFacultyFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
 
-  const result = await AcademicFacultyService.getAllFaculties(
-    filters,
-    paginationOptions,
-  );
+  const result = await AcademicFacultyService.getAllFaculties(filters, paginationOptions);
 
   sendResponse<IAcademicFaculty[]>(res, {
     statusCode: httpStatus.OK,
@@ -38,19 +34,17 @@ const getAllFaculties = catchAsyncError(async (req: Request, res: Response) => {
   });
 });
 
-const getSingleFaculty = catchAsyncError(
-  async (req: Request, res: Response) => {
-    const { id } = req.params;
-    const result = await AcademicFacultyService.getSingleFaculty(id);
+const getSingleFaculty = catchAsyncError(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await AcademicFacultyService.getSingleFaculty(id);
 
-    sendResponse<IAcademicFaculty>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'Academic Faculty fetched successfully',
-      data: result,
-    });
-  },
-);
+  sendResponse<IAcademicFaculty>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Academic Faculty fetched successfully',
+    data: result,
+  });
+});
 
 const updateFaculty = catchAsyncError(async (req: Request, res: Response) => {
   const { id } = req.params;

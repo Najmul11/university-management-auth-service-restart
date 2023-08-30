@@ -12,10 +12,7 @@ const getAllStudents = catchAsyncError(async (req: Request, res: Response) => {
   const filters = pick(req.query, studentFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
 
-  const result = await StudentService.getAllStudents(
-    filters,
-    paginationOptions,
-  );
+  const result = await StudentService.getAllStudents(filters, paginationOptions);
 
   sendResponse<IStudent[]>(res, {
     statusCode: httpStatus.OK,
@@ -26,19 +23,17 @@ const getAllStudents = catchAsyncError(async (req: Request, res: Response) => {
   });
 });
 
-const getSingleStudent = catchAsyncError(
-  async (req: Request, res: Response) => {
-    const { id } = req.params;
-    const result = await StudentService.getSingleStudent(id);
+const getSingleStudent = catchAsyncError(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await StudentService.getSingleStudent(id);
 
-    sendResponse<IStudent>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: ' Student retrieved  successfully',
-      data: result,
-    });
-  },
-);
+  sendResponse<IStudent>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' Student retrieved  successfully',
+    data: result,
+  });
+});
 
 const updateStudent = catchAsyncError(async (req: Request, res: Response) => {
   const { id } = req.params;

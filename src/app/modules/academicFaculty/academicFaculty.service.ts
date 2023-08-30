@@ -1,17 +1,12 @@
 import { SortOrder } from 'mongoose';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
-import {
-  IAcademicFaculty,
-  IAcademicFacultyFilters,
-} from './academicFaculty.interfaces';
+import { IAcademicFaculty, IAcademicFacultyFilters } from './academicFaculty.interfaces';
 import { academicFacultySearchableFields } from './academicfaculty.constants';
 import { AcademicFaculty } from './academicFaculty.model';
 import { paginationHelpers } from '../../../helpers/paginationHelpers';
 
-const createFaculty = async (
-  payload: IAcademicFaculty,
-): Promise<IAcademicFaculty | null> => {
+const createFaculty = async (payload: IAcademicFaculty): Promise<IAcademicFaculty | null> => {
   const result = await AcademicFaculty.create(payload);
   return result;
 };
@@ -50,8 +45,7 @@ const getAllFaculties = async (
   if (sortBy && sortOrder) {
     sortConditions[sortBy] = sortOrder;
   }
-  const whereConditions =
-    andConditions.length > 0 ? { $and: andConditions } : {};
+  const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await AcademicFaculty.find(whereConditions)
     .sort(sortConditions)
@@ -70,9 +64,7 @@ const getAllFaculties = async (
   };
 };
 
-const getSingleFaculty = async (
-  id: string,
-): Promise<IAcademicFaculty | null> => {
+const getSingleFaculty = async (id: string): Promise<IAcademicFaculty | null> => {
   const result = await AcademicFaculty.findById(id);
   return result;
 };
@@ -87,9 +79,7 @@ const updateFaculty = async (
   return result;
 };
 
-const deleteByIdFromDB = async (
-  id: string,
-): Promise<IAcademicFaculty | null> => {
+const deleteByIdFromDB = async (id: string): Promise<IAcademicFaculty | null> => {
   const result = await AcademicFaculty.findByIdAndDelete(id);
   return result;
 };

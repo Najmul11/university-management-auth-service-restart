@@ -43,8 +43,7 @@ const getAllFaculties = async (
   if (sortBy && sortOrder) {
     sortConditions[sortBy] = sortOrder;
   }
-  const whereConditions =
-    andConditions.length > 0 ? { $and: andConditions } : {};
+  const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Faculty.find(whereConditions)
     .populate('academicDepartment')
@@ -73,10 +72,7 @@ const getSingleFaculty = async (id: string): Promise<IFaculty | null> => {
   return result;
 };
 
-const updateFaculty = async (
-  id: string,
-  payload: Partial<IFaculty>,
-): Promise<IFaculty | null> => {
+const updateFaculty = async (id: string, payload: Partial<IFaculty>): Promise<IFaculty | null> => {
   const isExist = await Faculty.findOne({ id });
 
   if (!isExist) {

@@ -1,8 +1,5 @@
 import { Schema, model } from 'mongoose';
-import {
-  AcademicSemesterModel,
-  IAcademicSemester,
-} from './academicSemester.interface';
+import { AcademicSemesterModel, IAcademicSemester } from './academicSemester.interface';
 import {
   academicSemesterCodes,
   academicSemesterMonths,

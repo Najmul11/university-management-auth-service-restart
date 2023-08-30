@@ -174,6 +174,31 @@
             "date": 1693369271042,
             "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\errors\\phu-2023-30-08-10-error.log",
             "hash": "f4dfd8604861ed18f8645917a39af08a0cf1044e836814af328dcaa7fee70067"
+        },
+        {
+            "date": 1693371997235,
+            "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\errors\\phu-2023-30-08-11-error.log",
+            "hash": "dfc01273c2b10cba5bbd309a9efe61bcce0f64a63803e681cfc813fb7de46c25"
+        },
+        {
+            "date": 1693376178209,
+            "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\errors\\phu-2023-30-08-12-error.log",
+            "hash": "031b5610170b324edbef3890b5bc0edca18b6b97dab83408a23d7fc466067a59"
+        },
+        {
+            "date": 1693396122273,
+            "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\errors\\phu-2023-30-08-17-error.log",
+            "hash": "43a23e09324034fa85d7f4303b336c1c2943ffb77bb60ddf517d9575ac7373e8"
+        },
+        {
+            "date": 1693397741319,
+            "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\errors\\phu-2023-30-08-18-error.log",
+            "hash": "8da4440149939f36c82fda7697963a3fd70fced45d2442f307cf2e3363d2d6dd"
+        },
+        {
+            "date": 1693402086368,
+            "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\errors\\phu-2023-30-08-19-error.log",
+            "hash": "5d2b3ecc22bc0d7ae03b43711e19829e9b1c1d52f49f7ad1773e154be325caf3"
         }
     ],
     "hashType": "sha256"

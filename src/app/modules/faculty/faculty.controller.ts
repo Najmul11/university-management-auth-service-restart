@@ -12,10 +12,7 @@ const getAllFaculties = catchAsyncError(async (req: Request, res: Response) => {
   const filters = pick(req.query, facultyFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
 
-  const result = await FacultyService.getAllFaculties(
-    filters,
-    paginationOptions,
-  );
+  const result = await FacultyService.getAllFaculties(filters, paginationOptions);
 
   sendResponse<IFaculty[]>(res, {
     statusCode: httpStatus.OK,
@@ -26,19 +23,17 @@ const getAllFaculties = catchAsyncError(async (req: Request, res: Response) => {
   });
 });
 
-const getSingleFaculty = catchAsyncError(
-  async (req: Request, res: Response) => {
-    const id = req.params.id;
-    const result = await FacultyService.getSingleFaculty(id);
+const getSingleFaculty = catchAsyncError(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await FacultyService.getSingleFaculty(id);
 
-    sendResponse<IFaculty>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'faculty retrieved successfully !',
-      data: result,
-    });
-  },
-);
+  sendResponse<IFaculty>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'faculty retrieved successfully !',
+    data: result,
+  });
+});
 
 const updateFaculty = catchAsyncError(async (req: Request, res: Response) => {
   const id = req.params.id;

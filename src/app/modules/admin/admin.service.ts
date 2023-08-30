@@ -44,8 +44,7 @@ const getAllAdmins = async (
   if (sortBy && sortOrder) {
     sortConditions[sortBy] = sortOrder;
   }
-  const whereConditions =
-    andConditions.length > 0 ? { $and: andConditions } : {};
+  const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Admin.find(whereConditions)
     .populate('managementDepartment')
@@ -70,10 +69,7 @@ const getSingleAdmin = async (id: string): Promise<IAdmin | null> => {
   return result;
 };
 
-const updateAdmin = async (
-  id: string,
-  payload: Partial<IAdmin>,
-): Promise<IAdmin | null> => {
+const updateAdmin = async (id: string, payload: Partial<IAdmin>): Promise<IAdmin | null> => {
   const isExist = await Admin.findOne({ id });
 
   if (!isExist) {
