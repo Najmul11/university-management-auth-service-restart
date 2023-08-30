@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Request, Response } from 'express';
 import { UserService } from './user.service';
 import catchAsyncError from '../../../shared/catchAsyncError';
@@ -20,6 +21,7 @@ const createStudent = catchAsyncError(async (req: Request, res: Response) => {
 
 const createFaculy = catchAsyncError(async (req: Request, res: Response) => {
   const { faculty, ...userData } = req.body;
+
   const result = await UserService.createFaculty(faculty, userData);
 
   sendResponse<IUser>(res, {
