@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Request, Response } from 'express';
 import catchAsyncError from '../../../shared/catchAsyncError';
 import sendResponse from '../../../shared/sendResponse';
@@ -28,6 +29,7 @@ const loginUser = catchAsyncError(async (req: Request, res: Response) => {
 
 const refreshToken = catchAsyncError(async (req: Request, res: Response) => {
   const { refreshToken } = req.cookies;
+  console.log(refreshToken);
 
   const result = await AuthService.refreshToken(refreshToken);
 
@@ -45,7 +47,21 @@ const refreshToken = catchAsyncError(async (req: Request, res: Response) => {
   });
 });
 
+const changePassword = catchAsyncError(async (req: Request, res: Response) => {
+  const { ...passwordData } = req.body;
+  const user = req.user;
+
+  await AuthService.changePassword(user, passwordData);
+
+  sendResponse<ILoginUserResponse>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Password changed successfully!',
+  });
+});
+
 export const AuthController = {
   loginUser,
   refreshToken,
+  changePassword,
 };

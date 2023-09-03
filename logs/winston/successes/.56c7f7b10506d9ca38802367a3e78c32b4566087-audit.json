@@ -199,6 +199,16 @@
             "date": 1693402086364,
             "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\successes\\phu-2023-30-08-19-success.log",
             "hash": "9b9741b64e47fa780588f2c623b904ccafb9d3167825e293982e23017f231347"
+        },
+        {
+            "date": 1693404320461,
+            "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\successes\\phu-2023-30-08-20-success.log",
+            "hash": "b6e8dbd5111ab6463247b07c4aec494efddc0592daf55a3a8cb0638ea5d0dcca"
+        },
+        {
+            "date": 1693584446918,
+            "name": "E:\\Next Level\\mission 3\\Restart 11\\university-management-auth-service- restart\\logs\\winston\\successes\\phu-2023-01-09-22-success.log",
+            "hash": "8162444d0ba1ef0b7b91b3a8b4ecf945698ca9c1ae9d2778506cc93c710167d4"
         }
     ],
     "hashType": "sha256"
